@@ -2,15 +2,15 @@
 <h1><a id="Git_and_GitHub_0"></a>Git and GitHub</h1>
 <h2><a id="Intro_2"></a>Intro</h2>
 <p>Welcome to a git and github lesson. Thanks for coming.</p>
-<p>Topday we will cover version control, why it is important, and how to use one falvour, git,
+<p>Today we will cover version control, why it is important, and how to use one flavour, git,
 with one of the more popular web interfaces, github. This will shortly be our setup here at Precima.</p>
 <p>Nearly everyone has had a version of the problem in the below comic, either with a paper, thesis or with code:</p>
 <p><img src="phd101212s.gif" alt=""></p>
 <p>“Piled Higher and Deeper” by Jorge Cham, <a href="http://www.phdcomics.com">http://www.phdcomics.com</a></p>
 <p>Most people are now familiar with microsoft words ‘track change’ tool - why doesn’t something similar exist for code?</p>
 <p>The answer is that it does, and there are multiple versions.</p>
-<p>The current winner of the race is git. Older versions such as SVNare still extant, and
-mercurial, or Hg is still widely used. The benefit of newer versions, such as git or Hg is their distruted nature, and the fancy merging capabilities. GitHub and its associated pull has lead git to
+<p>The current winner of the race is git. Older versions such as SVN and RCS are still extant, and
+mercurial, or Hg, is still widely used. The benefit of newer versions, such as git or Hg is their distributed nature, and the fancy merging capabilities. GitHub and its associated pull request has lead git to
 be the most commonly used version control software, and thus this is what we will use.</p>
 <h3><a id="What_is_git_23"></a>What is git?</h3>
 <p>Simply put, git is a free, open source command line utility for tracking changes to text based files.</p>
@@ -18,11 +18,11 @@ be the most commonly used version control software, and thus this is what we wil
 <p>Under the hood, git has a vety nice tree based model and is incredibly powerful. For our purposes, we will use the beginners version today:</p>
 <p><img src="git.png" alt=""></p>
 <p>Git - XKCD <a href="https://xkcd.com/1597/">https://xkcd.com/1597/</a></p>
-<p>As git is notoriously user difficult to understand, there are many git front ends:
+<p>As git is notoriously difficult to understand, there are many git front ends:
 either guis, like <a href="https://www.sourcetreeapp.com/">sourcetree</a> or <a href="https://www.gitkraken.com/">gitkraken</a>, as well as web SaaS like <a href="https://github.com/">GitHub</a>, <a href="https://gitlab.com/">Gitlab</a> and <a href="https://bitbucket.com/">BitBucket</a>.</p>
 <p>Precima is moving to git and GitHUb, so that’s what we will focus on today.</p>
 <p>GitHub offers free hosting of projects, with the caveat that they are open to the public internet.</p>
-<p>The Model Engine team are currently using an organisation account, where we can keep our code private with up to five users with a cost of $25 per month, and extra users at $5 per user/month. I believe we are eventually planning to host a central github server locally for global use.</p>
+<p>The Model Engine team are currently using an organisation account, where we can keep our code private with up to five users with a cost of $25 per month, and extra users at $9 per user/month. I believe we are eventually planning to host a central github server locally for global use.</p>
 <p>Git projects are organised into repositories, which contain a directory of code (or other text) under version control. We can track binary files, but this is not super efficient.</p>
 <h3><a id="A_brief_run_through_of_the_pmengine_organisation_46"></a>A brief run through of the pmengine organisation</h3>
 <ul>
@@ -41,7 +41,7 @@ $ git config --global color.ui <span class="hljs-string">"auto"</span>
 $ git config --global core.autocrlf <span class="hljs-literal">true</span>
 </code></pre>
 <p>We change our user name, email, colours and line endings.</p>
-<p>Now we can set an editor (I use Atom, most of you use Notepad ++, a couple use Sublime):</p>
+<p>Now we can set an editor (I use Atom, most of you use Notepad++, a couple use Sublime):</p>
 <pre><code class="language-BASH">$ git config --global core.editor <span class="hljs-string">"atom --wait"</span>
 $ git config --global core.editor <span class="hljs-string">"'c:/program files/sublime text 3/sublime_text.exe' -w"</span>
 $ git config --global core.editor <span class="hljs-string">"'c:/program files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"</span>
@@ -167,21 +167,21 @@ index e217053..9de4007 100644
 <pre><code class="language-BASH">$ git diff HEAD helloworld.py
 </code></pre>
 <p>Here head refers to the last commit. HEAD~1 refers to the one before, HEAD~2 etc etc.</p>
-<p>We can also refer by the commit id - its hex, so we only need the first few:</p>
+<p>We can also refer by the commit id - it’s hexadecimal, so we only need the first few:</p>
 <pre><code class="language-BASH">$ git diff db97e helloworld.py
 </code></pre>
 <p>As well as diffing, we can check out:</p>
 <pre><code class="language-BASH">$ git checkout db97e helloworld.py
 </code></pre>
 <p>This will change the version of the file to that in that commit! Notepad++ users may have to reload,
-better text editors will change straight away. If you do this without commited changed, git may complain - to
+better text editors will change straight away. If you do this without committed changed, git may complain - to
 revert everything to your latest commit, use a hard reset:</p>
 <pre><code class="language-BASH">git reset --hard
 </code></pre>
 <p>Warning: this will delete any local changes!</p>
 <h4><a id="Working_With_Remotes_285"></a>Working With Remotes</h4>
 <p>So far, everything we have done is local to our machine - we have not used anything from github - only git.</p>
-<p>Now, imagine we want to share our code across computers, or with collaborators. We could use dropbox or box, or some other solution</p>
+<p>Now, imagine we want to share our code across computers, or with collaborators. We could use dropbox or box, or some other solution.</p>
 <p>But, these are terrible for code!</p>
 <p>What we want to do is set up a remote, and we will do that using github.</p>
 <h4><a id="Caution_295"></a>Caution!</h4>
@@ -245,7 +245,7 @@ Others exist, but make sure you and your collaborators choose one!</p>
 <p>To switch to this newbranch, use checkout:</p>
 <pre><code class="language-BASH">$ git checkout newbranch
 </code></pre>
-<p>Now you can work safely, wihtout having to worry about merge conflicts with other branches or collaborators.</p>
+<p>Now you can work safely, without having to worry about merge conflicts with other branches or collaborators.</p>
 <p>At some point however, you will want to merge back into the master, so it is worth while merging as often as possible:</p>
 <pre><code class="language-BASH">git merge master
 </code></pre>
@@ -273,13 +273,14 @@ Others exist, but make sure you and your collaborators choose one!</p>
 <li>git branch - make a new branch</li>
 <li>git merge - merge between branches (or commits)</li>
 </ul>
-<p>There is much more to git, but this covers 95% or everyday use!</p>
+<p>There is much more to git, but this covers 95% or everyday use.</p>
 <h3><a id="Further_Resources_442"></a>Further Resources</h3>
 <ul>
 <li>Git lesson, Software Carpentry <a href="http://swcarpentry.github.io/git-novice/">http://swcarpentry.github.io/git-novice/</a></li>
 <li>Try Git - <a href="https://try.github.io/levels/1/challenges/1">https://try.github.io/levels/1/challenges/1</a></li>
 <li>GitHub Guides - <a href="https://guides.github.com/">https://guides.github.com/</a></li>
 <li>Atlassian git tutorials - <a href="https://www.atlassian.com/git/tutorials/">https://www.atlassian.com/git/tutorials/</a></li>
+<li>Version Control with Git, 2nd Edition - <a href="http://shop.oreilly.com/product/0636920022862.do">http://shop.oreilly.com/product/0636920022862.do</a></li>
 </ul>
 <p>Copyright Notice - Contains material substantially modified from the <a href="http://software-carpentry.org/">Software Carpentry</a> git lesson,
 <a href="http://swcarpentry.github.io/git-novice/">available here</a>.

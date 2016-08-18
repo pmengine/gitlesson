@@ -4,7 +4,7 @@
 
 Welcome to a git and github lesson. Thanks for coming.
 
-Topday we will cover version control, why it is important, and how to use one falvour, git,
+Today we will cover version control, why it is important, and how to use one flavour, git,
 with one of the more popular web interfaces, github. This will shortly be our setup here at Precima.
 
 Nearly everyone has had a version of the problem in the below comic, either with a paper, thesis or with code:
@@ -17,8 +17,8 @@ Most people are now familiar with microsoft words 'track change' tool - why does
 
 The answer is that it does, and there are multiple versions.
 
-The current winner of the race is git. Older versions such as SVNare still extant, and
-mercurial, or Hg is still widely used. The benefit of newer versions, such as git or Hg is their distruted nature, and the fancy merging capabilities. GitHub and its associated pull has lead git to
+The current winner of the race is git. Older versions such as SVN and RCS are still extant, and
+mercurial, or Hg, is still widely used. The benefit of newer versions, such as git or Hg is their distributed nature, and the fancy merging capabilities. GitHub and its associated pull request has lead git to
 be the most commonly used version control software, and thus this is what we will use.
 
 ### What is git?
@@ -33,14 +33,14 @@ Under the hood, git has a vety nice tree based model and is incredibly powerful.
 
 Git - XKCD https://xkcd.com/1597/
 
-As git is notoriously user difficult to understand, there are many git front ends:
+As git is notoriously difficult to understand, there are many git front ends:
 either guis, like [sourcetree](https://www.sourcetreeapp.com/) or [gitkraken](https://www.gitkraken.com/), as well as web SaaS like [GitHub](https://github.com/), [Gitlab](https://gitlab.com/) and [BitBucket](https://bitbucket.com/).
 
 Precima is moving to git and GitHUb, so that's what we will focus on today.
 
 GitHub offers free hosting of projects, with the caveat that they are open to the public internet.
 
-The Model Engine team are currently using an organisation account, where we can keep our code private with up to five users with a cost of $25 per month, and extra users at $5 per user/month. I believe we are eventually planning to host a central github server locally for global use.
+The Model Engine team are currently using an organisation account, where we can keep our code private with up to five users with a cost of $25 per month, and extra users at $9 per user/month. I believe we are eventually planning to host a central github server locally for global use.
 
 Git projects are organised into repositories, which contain a directory of code (or other text) under version control. We can track binary files, but this is not super efficient.
 
@@ -68,7 +68,7 @@ $ git config --global core.autocrlf true
 
 We change our user name, email, colours and line endings.
 
-Now we can set an editor (I use Atom, most of you use Notepad ++, a couple use Sublime):
+Now we can set an editor (I use Atom, most of you use Notepad++, a couple use Sublime):
 
 ```BASH
 $ git config --global core.editor "atom --wait"
@@ -261,7 +261,7 @@ $ git diff HEAD helloworld.py
 
 Here head refers to the last commit. HEAD~1 refers to the one before, HEAD~2 etc etc.
 
-We can also refer by the commit id - its hex, so we only need the first few:
+We can also refer by the commit id - it's hexadecimal, so we only need the first few:
 
 ```BASH
 $ git diff db97e helloworld.py
@@ -274,7 +274,7 @@ $ git checkout db97e helloworld.py
 ```
 
 This will change the version of the file to that in that commit! Notepad++ users may have to reload,
-better text editors will change straight away. If you do this without commited changed, git may complain - to
+better text editors will change straight away. If you do this without committed changed, git may complain - to
 revert everything to your latest commit, use a hard reset:
 
 ```BASH
@@ -287,7 +287,7 @@ Warning: this will delete any local changes!
 
 So far, everything we have done is local to our machine - we have not used anything from github - only git.
 
-Now, imagine we want to share our code across computers, or with collaborators. We could use dropbox or box, or some other solution
+Now, imagine we want to share our code across computers, or with collaborators. We could use dropbox or box, or some other solution.
 
 But, these are terrible for code!
 
@@ -400,7 +400,7 @@ To switch to this newbranch, use checkout:
 $ git checkout newbranch
 ```
 
-Now you can work safely, wihtout having to worry about merge conflicts with other branches or collaborators.
+Now you can work safely, without having to worry about merge conflicts with other branches or collaborators.
 
 At some point however, you will want to merge back into the master, so it is worth while merging as often as possible:
 
@@ -438,7 +438,7 @@ We now know why to use git, and how to use it locally and remotely with GitHub!
 - git branch - make a new branch
 - git merge - merge between branches (or commits)
 
-There is much more to git, but this covers 95% or everyday use!
+There is much more to git, but this covers 95% or everyday use.
 
 ### Further Resources
 
@@ -446,7 +446,7 @@ There is much more to git, but this covers 95% or everyday use!
 - Try Git - https://try.github.io/levels/1/challenges/1
 - GitHub Guides - https://guides.github.com/
 - Atlassian git tutorials - https://www.atlassian.com/git/tutorials/
-
+- Version Control with Git, 2nd Edition - http://shop.oreilly.com/product/0636920022862.do
 
 
 Copyright Notice - Contains material substantially modified from the [Software Carpentry](http://software-carpentry.org/) git lesson,
