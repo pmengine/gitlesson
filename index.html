@@ -1,0 +1,285 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Untitled Document.md</title><style></style></head><body id="preview">
+<h2><a id="Intro_0"></a>Intro</h2>
+<p>Welcome to a git and github lesson. Thanks for coming.</p>
+<p>Topday we will cover version control, why it is important, and how to use one falvour, git,
+with one of the more popular web interfaces, github. This will shortly be our setup here at Precima.</p>
+<p>Nearly everyone has had a version of the problem in the below comic, either with a paper, thesis or with code:</p>
+<p><img src="phd101212s.gif" alt=""></p>
+<p>“Piled Higher and Deeper” by Jorge Cham, <a href="http://www.phdcomics.com">http://www.phdcomics.com</a></p>
+<p>Most people are now familiar with microsoft words ‘track change’ tool - why doesn’t something similar exist for code?</p>
+<p>The answer is that it does, and there are multiple versions.</p>
+<p>The current winner of the race is git. Older versions such as SVNare still extant, and
+mercurial, or Hg is still widely used. The benefit of newer versions, such as git or Hg is their distruted nature, and the fancy merging capabilities. GitHub and its associated pull has lead git to
+be the most commonly used version control software, and thus this is what we will use.</p>
+<h3><a id="What_is_git_21"></a>What is git?</h3>
+<p>Simply put, git is a free, open source command line utility for tracking changes to text based files.</p>
+<p>It was developed by Linus Torvalds, the same Linus who created Linux, in order to track changes to the linux kernel.</p>
+<p>Under the hood, git has a vety nice tree based model and is incredibly powerful. For our purposes, we will use the beginners version today:</p>
+<p><img src="git.png" alt=""></p>
+<p>Git - XKCD <a href="https://xkcd.com/1597/">https://xkcd.com/1597/</a></p>
+<p>As git is notoriously user difficult to understand, there are many git front ends:
+either guis, like <a href="https://www.sourcetreeapp.com/">sourcetree</a> or <a href="https://www.gitkraken.com/">gitkraken</a>, as well as web SaaS like <a href="https://github.com/">GitHub</a>, <a href="https://gitlab.com/">Gitlab</a> and <a href="https://bitbucket.com/">BitBucket</a>.</p>
+<p>Precima is moving to git and GitHUb, so that’s what we will focus on today.</p>
+<p>GitHub offers free hosting of projects, with the caveat that they are open to the public internet.</p>
+<p>The Model Engine team are currently using an organisation account, where we can keep our code private with up to five users with a cost of $25 per month, and extra users at $5 per user/month. I believe we are eventually planning to host a central github server locally for global use.</p>
+<p>Git projects are organised into repositories, which contain a directory of code (or other text) under version control. We can track binary files, but this is not super efficient.</p>
+<h3><a id="A_brief_run_through_of_the_pmengine_organisation_44"></a>A brief run through of the pmengine organisation</h3>
+<ul>
+<li>Multiple repos in a project</li>
+<li>Web based view</li>
+<li>Issues</li>
+<li>Pull requests</li>
+<li>Commenting</li>
+</ul>
+<h3><a id="Instructions_52"></a>Instructions</h3>
+<h4><a id="Set_Up_a_New_Repo_55"></a>Set Up a New Repo</h4>
+<p>The First thing we need to do is setup our local system. Open up your favourite terminal (I use powershell), and enter in some global config:</p>
+<pre><code class="language-BASH">$ git config --global user.name <span class="hljs-string">"Jeremy Gray"</span>
+$ git config --global user.email <span class="hljs-string">"jgray@precima.com"</span>
+$ git config --global color.ui <span class="hljs-string">"auto"</span>
+$ git config --global core.autocrlf <span class="hljs-literal">true</span>
+</code></pre>
+<p>We change our user name, email, colours and line endings.</p>
+<p>Now we can set an editor (I use Atom, most of you use Notepad ++, a couple use Sublime):</p>
+<pre><code class="language-BASH">$ git config --global core.editor <span class="hljs-string">"atom --wait"</span>
+$ git config --global core.editor <span class="hljs-string">"'c:/program files/sublime text 3/sublime_text.exe' -w"</span>
+$ git config --global core.editor <span class="hljs-string">"'c:/program files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"</span>
+</code></pre>
+<p>Now we are ready for a new repo! Make a new directory:</p>
+<pre><code class="language-BASH">$ mkdir mygitrepo
+$ <span class="hljs-built_in">cd</span> mygitrepo
+</code></pre>
+<p>Now init a new repo - you should not do this is a directory with anything else in it! You will be tracking changes to everything in this directory. Try not to put git repos inside other git repos…</p>
+<pre><code class="language-BASH">$ git init
+$ git status
+</code></pre>
+<p>We can see a little detail - and that we made a new folder called .git:</p>
+<pre><code class="language-BASH">$ ls <span class="hljs-operator">-a</span>
+<span class="hljs-comment">#or dir -Force</span>
+</code></pre>
+<p>Inside this folder we store all our history and some other fun stuff - you probably shouldn’t touch anything in there for now.</p>
+<h4><a id="Adding_Content_99"></a>Adding Content</h4>
+<p>Let’s make a simple python file:</p>
+<pre><code class="language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">helloworld</span><span class="hljs-params">()</span>:</span>
+  print(<span class="hljs-string">'Hello World'</span>)
+
+<span class="hljs-keyword">if</span> <span class="hljs-string">'__name__'</span> == __main__:
+  helloworld()
+
+</code></pre>
+<p>And save it in this directory as ’<a href="http://helloworld.py">helloworld.py</a>’</p>
+<p>Try running git status again:</p>
+<pre><code class="language-BASH">$ git status
+</code></pre>
+<p>We now have code here that is not ‘tracked’:</p>
+<pre><code># On branch master
+#
+# Initial commit
+#
+# Untracked files:
+#   (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+#
+#   helloworld.py
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+</code></pre>
+<p>Let’s add the files as suggested by the message -</p>
+<pre><code class="language-BASH">$ git add helloworld.py <span class="hljs-comment">#or git add --all</span>
+$ git status
+</code></pre>
+<p>Now the files are in the staging area:</p>
+<pre><code># On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+#
+#   new file:   helloworld.py
+#
+</code></pre>
+<p>Git has a three stage system - changes that are present, but untracked, changes that are
+added to the staging area, and changes that have been committed to the history.</p>
+<p>We don’t have to commit all the current changes - I regularly keep trash hanging around my repos.</p>
+<p>Now we can commit the changes - this will store a permanent (mostly) history of the change.</p>
+<p>Using the -m flag, we give a commit message. Make this as informative as possible!!!</p>
+<pre><code class="language-BASH">$ git commit -m <span class="hljs-string">'initial commit of helloworld.py'</span>
+</code></pre>
+<pre><code>[master (root-commit) c23453] initial commit of helloworld.py
+ 1 file changed, 1 insertion(+)
+ create mode 100644 helloworld.py
+</code></pre>
+<p>More info is better:</p>
+<p><img src="git_commit.png" alt=""></p>
+<p>Now we have a history of our changes - we can see them using git log:</p>
+<pre><code class="language-BASH">$ git <span class="hljs-built_in">log</span>
+</code></pre>
+<p>What if we have a large binary file, or csv, or other type of file we don’t want to track?</p>
+<p>The optional file .gitignore can be used to tell git not to track them:</p>
+<pre><code>*.csv
+*.log
+*.pyc
+</code></pre>
+<p>Save this in the root of the directory - now we can put csvs without tracking.</p>
+<h4><a id="Tracking_Content_194"></a>Tracking Content</h4>
+<p>Now we might want to make a change to the file:</p>
+<pre><code class="language-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">helloworld</span><span class="hljs-params">()</span>:</span>
+  print(<span class="hljs-string">'Version 1.0'</span>)
+  print(<span class="hljs-string">'Hello World'</span>)
+
+<span class="hljs-keyword">if</span> <span class="hljs-string">'__name__'</span> == __main__:
+  helloworld()
+
+</code></pre>
+<p>Save this, and run git status:</p>
+<pre><code>On branch master
+nothing to commit, working directory clean
+PS C:\Users\jgray\Desktop\mygitrepo&gt; git status
+On branch master
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+        modified:   helloworld.py
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre>
+<p>We can see helloworld is modified but the changes are not staged:</p>
+<p>Try a diff:</p>
+<pre><code class="language-BASH">$ git diff
+</code></pre>
+<p>git diff also works on files or dirs - git diff file</p>
+<pre><code>diff --git a/helloworld.py b/helloworld.py
+index e217053..9de4007 100644
+--- a/helloworld.py
++++ b/helloworld.py
+@@ -1,4 +1,5 @@
+ def helloworld():
++  print('Version 1.0')
+   print('Hello World')
+
+ if '__name__' == __main__:
+</code></pre>
+<p>stage them</p>
+<p>commit them</p>
+<p>run status</p>
+<p>As well as a diff to the most recent version, we can diff to older versions:</p>
+<pre><code class="language-BASH">$ git diff HEAD helloworld.py
+</code></pre>
+<p>Here head refers to the last commit. HEAD~1 refers to the one before, HEAD~2 etc etc.</p>
+<p>We can also refer by the commit id - its hex, so we only need the first few:</p>
+<pre><code class="language-BASH">$ git diff db97e helloworld.py
+</code></pre>
+<p>As well as diffing, we can check out:</p>
+<pre><code class="language-BASH">$ git checkout db97e helloworld.py
+</code></pre>
+<p>This will change the version of the file to that in that commit! Notepad++ users may have to reload,
+better text editors will change straight away. If you do this without commited changed, git may complain - to
+revert everything to your latest commit, use a hard reset:</p>
+<pre><code class="language-BASH">git reset --hard
+</code></pre>
+<p>Warning: this will delete any local changes!</p>
+<h4><a id="Working_With_Remotes_283"></a>Working With Remotes</h4>
+<p>So far, everything we have done is local to our machine - we have not used anything from github - only git.</p>
+<p>Now, imagine we want to share our code across computers, or with collaborators. We could use dropbox or box, or some other solution</p>
+<p>But, these are terrible for code!</p>
+<p>What we want to do is set up a remote, and we will do that using github.</p>
+<h4><a id="Caution_293"></a>Caution!</h4>
+<p>GitHub is a public website, and any code on there is by default open to the world. Do not put anything on here that is not in a private organisation or repo.</p>
+<p>To set up a remote, we need to go to github and set up a repo.</p>
+<p>The github instructions are hopefully self explanatory - we make a new repo, then set our remote as the git repo:</p>
+<pre><code class="language-BASH">git remote add origin https://github.com/user/repo.git
+git push origin master
+</code></pre>
+<p>The push command will hopefully ask for your github username and password.</p>
+<p>Now we have uploaded our code to GitHub!</p>
+<p>Try browsing the history, and the diffs.</p>
+<p>We can make edits on the website (if we really must), using the edit button, and commit from there.</p>
+<p>The opposite of push is pull - this will let us update our local code from the github version:</p>
+<pre><code class="language-BASH">$ git pull origin master
+</code></pre>
+<h4><a id="Collaborating_320"></a>Collaborating</h4>
+<p>Once we have a repo set up, we can add others to have write access (or read access if private).</p>
+<p>Once we have more than one user, we might want to clone a repo - this will pull down the current version from github into a new directory:</p>
+<pre><code class="language-BASH">$ git <span class="hljs-built_in">clone</span> https://github.com/user/repo.git
+</code></pre>
+<p>Now the user can commit to the repo like the other user - the git log will reflect the user who last made changes.</p>
+<h4><a id="Branching_Merging_and_Conflicts_333"></a>Branching, Merging and Conflicts</h4>
+<h5><a id="Conflicts_335"></a>Conflicts</h5>
+<p>Once this is set up, the first thing that will happen is a merge conflict.</p>
+<p>This happens when two people edit the same file, at the same place. Git is normally extremely good at fixing these changes, but sometimes will not be able to:</p>
+<p>This will most likely look like this upon pushing to github:</p>
+<pre><code>To https://github.com/user/repo.git
+ ! [rejected]        master -&gt; master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/user/repo.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Merge the remote changes (e.g. 'git pull')
+hint: before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+</code></pre>
+<p>When you try to fix it using git pull, as recommended, we get another error:</p>
+<pre><code>CONFLICT (content): Merge conflict in file.txt
+Automatic merge failed; fix conflicts and then commit the result.
+</code></pre>
+<p>You will need to open the file, and edit it. Merge conflicts are automatically flagged by most newer text editors,
+but will look like this:</p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+We added a different line in the other copy
+=======
+This line added to one copy
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; dabb4c8c450e8475aee9b14b4383acc99f42af1d
+</code></pre>
+<p>Once this is fixed, add, commit and push.</p>
+<p>Remember the hint from above:</p>
+<p>Merge the remote changes (e.g. ‘git pull’) before pushing again.</p>
+<h4><a id="Branches_377"></a>Branches</h4>
+<p>To reduce merge conflicts, it is useful to work on branches.</p>
+<p>Branches allow different versions of the same code to coexist - for the model engine, we have a master branch,
+which should match the current release, a dev branch with completed features since then, and feature specific branches for adding in new
+features.</p>
+<p>This is roughly the <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow/">gitflow workflow</a>.
+Others exist, but make sure you and your collaborators choose one!</p>
+<p>To create a branch, use the git branch command</p>
+<pre><code class="language-BASH">$ git branch newbranch
+</code></pre>
+<p>To switch to this newbranch, use checkout:</p>
+<pre><code class="language-BASH">$ git checkout newbranch
+</code></pre>
+<p>Now you can work safely, wihtout having to worry about merge conflicts with other branches or collaborators.</p>
+<p>At some point however, you will want to merge back into the master, so it is worth while merging as often as possible:</p>
+<pre><code class="language-BASH">git merge master
+</code></pre>
+<p>Most of the time this will work, but if git cannot automatically update, you will get the same problem.</p>
+<p>You can fix this with a merge conflict resolution, or simply copy across files outside of git and make a new commit
+(this might lead to more problems down the line though).</p>
+<h3><a id="Summary_414"></a>Summary</h3>
+<p>We now know why to use git, and how to use it locally and remotely with GitHub!</p>
+<h4><a id="Key_Commands_418"></a>Key Commands</h4>
+<p><img src="git.jpg" alt=""></p>
+<ul>
+<li>git init - start annew git repo in the current directory</li>
+<li>git status - get current status of changes</li>
+<li>git add - add files to the staging area</li>
+<li>git commit - add current staged files to the repo</li>
+<li>git log - check history of the repo</li>
+<li>git diff - find the diffs of all files (or specific ones)</li>
+<li>git checkout - change to a historical commit, or a branch</li>
+<li>git reset - rest all changes in a repo. --hard helps!</li>
+<li>git remote - add or interact with a remote repo</li>
+<li>git push - push local changes to a remote repo</li>
+<li>git pull - pull changes from a remote branch</li>
+<li>git fetch - get all remote changes, but do not apply them (risky!)</li>
+<li>git clone - clone a remote repo</li>
+<li>git branch - make a new branch</li>
+<li>git merge - merge between branches (or commits)</li>
+</ul>
+<p>There is much more to git, but this covers 95% or everyday use!</p>
+<h3><a id="Further_Resources_440"></a>Further Resources</h3>
+<p>Git lesson, Software Carpentry <a href="http://swcarpentry.github.io/git-novice/">http://swcarpentry.github.io/git-novice/</a>
+Try Git - <a href="https://try.github.io/levels/1/challenges/1">https://try.github.io/levels/1/challenges/1</a>
+GitHub Guides - <a href="https://guides.github.com/">https://guides.github.com/</a>
+Atlassian git tutorials - <a href="https://www.atlassian.com/git/tutorials/">https://www.atlassian.com/git/tutorials/</a></p>
+<p>Copyright Notice - Contains material substantially modified from the <a href="http://software-carpentry.org/">Software Carpentry</a> git lesson,
+<a href="http://swcarpentry.github.io/git-novice/">available here</a>.
+This content is copyrighted by Software Carpentry, under the <a href="https://creativecommons.org/licenses/by/4.0/">CCBY 4.0 license</a></p>
+
+</body></html>
