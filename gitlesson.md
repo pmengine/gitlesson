@@ -1,3 +1,5 @@
+# Git and GitHub
+
 ## Intro
 
 Welcome to a git and github lesson. Thanks for coming.
@@ -8,6 +10,7 @@ with one of the more popular web interfaces, github. This will shortly be our se
 Nearly everyone has had a version of the problem in the below comic, either with a paper, thesis or with code:
 
 ![](phd101212s.gif)
+
 “Piled Higher and Deeper” by Jorge Cham, http://www.phdcomics.com
 
 Most people are now familiar with microsoft words 'track change' tool - why doesn't something similar exist for code?
@@ -27,6 +30,7 @@ It was developed by Linus Torvalds, the same Linus who created Linux, in order t
 Under the hood, git has a vety nice tree based model and is incredibly powerful. For our purposes, we will use the beginners version today:
 
 ![](git.png)
+
 Git - XKCD https://xkcd.com/1597/
 
 As git is notoriously user difficult to understand, there are many git front ends:
@@ -438,10 +442,12 @@ There is much more to git, but this covers 95% or everyday use!
 
 ### Further Resources
 
-Git lesson, Software Carpentry http://swcarpentry.github.io/git-novice/
-Try Git - https://try.github.io/levels/1/challenges/1
-GitHub Guides - https://guides.github.com/
-Atlassian git tutorials - https://www.atlassian.com/git/tutorials/
+- Git lesson, Software Carpentry http://swcarpentry.github.io/git-novice/
+- Try Git - https://try.github.io/levels/1/challenges/1
+- GitHub Guides - https://guides.github.com/
+- Atlassian git tutorials - https://www.atlassian.com/git/tutorials/
+
+
 
 Copyright Notice - Contains material substantially modified from the [Software Carpentry](http://software-carpentry.org/) git lesson,
  [available here](http://swcarpentry.github.io/git-novice/).
